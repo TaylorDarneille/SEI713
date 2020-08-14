@@ -33,7 +33,7 @@ Your app must:
 
 ## Suggested Process
 
-* I’m  Before you do ANYTHING, make sure you know how to get all the data exactly as you need it (this means you need to be working with a `.js` file that you run to make test API calls or scrape your data)
+* Before you do ANYTHING, make sure you know how to get all the data exactly as you need it (this means you need to be working with a `.js` file that you run to make test API calls or scrape your data)
 *  Make models, do migrations, and make sure your db works by writing a `dbTest.js` file (and explain in your readme what this is)
 * Stub out routes (w/ `res.send()`) and get them organized into controllers
 * add database calls to your routes
