@@ -31,18 +31,16 @@ Your app must:
 * A **git repository hosted on Github**, with a link to your hosted project,  and frequent commits dating back to the **very beginning** of the project. Commit early, commit often.
 * **A `readme.md` file** with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, and a link to the live site.
 
-## Suggested Ways to Get Started
+## Suggested Process
 
-* Start with wireframes and go through a project planning process. Consider what is your:
-  * Goals for each 'sprint'
-  * MVP
-  * Stretch Goals
-* **Begin with the end in mind.** Know where you want to go by planning with wireframes & user stories, so you don't waste time building things you don't need
-* **Don't hesitate to write throwaway code to solve short term problems**
-* **Read the docs for whatever technologies you use.** Most of the time, there is a tutorial that you can follow, but not always, and learning to read documentation is crucial to your success as a developer
-* **Commit early, commit often.** Don't be afraid to break something because you can always go back in time to a previous version.
-* **User stories define what a specific type of user wants to accomplish with your application**. It's tempting to just make them _todo lists_ for what needs to get done, but if you keep them small & focused on what a user cares about from their perspective, it'll help you know what to build
-* **Write pseudocode before you write actual code.** Thinking through the logic of something helps.
+* I’m  Before you do ANYTHING, make sure you know how to get all the data exactly as you need it (this means you need to be working with a `.js` file that you run to make test API calls or scrape your data)
+*  Make models, do migrations, and make sure your db works by writing a `dbTest.js` file (and explain in your readme what this is)
+* Stub out routes (w/ `res.send()`) and get them organized into controllers
+* add database calls to your routes
+* Make views and start serving them with `res.render()`
+* Do styling LAST
+* DONT FORGET ABOUT README
+
 
 ## Useful Resources
 
