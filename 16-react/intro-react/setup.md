@@ -11,7 +11,7 @@ _After this lesson, you will be able to:_
 
 Let's jump right in! We'll create a skeleton React project and walk through it as we go.
 
-An easy way to start React projects is to use a Terminal program called `create-react-app`. This excellent tool, created by Facebook, will help you set up a bare-bones React app instantly. We can simply install the package and start coding.
+An easy way to start React projects is to use a Terminal program called [`create-react-app`](https://reactjs.org/docs/create-a-new-react-app.html). This excellent tool, created by Facebook, will help you set up a bare-bones React app instantly. We can simply install the package and start coding.
 
 Let's use `npm` to install it globally so we'll always have it available in our Terminal. Run:
 
