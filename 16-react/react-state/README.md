@@ -148,10 +148,6 @@ return (
 
 Ok, we set an initial state. But how do we go about changing it?
 
-We need to set up some sort of **trigger event** to change the mood counter.
-
-We will create a button that the user can click, which will increase their mood by one.
-
 Changing the value of `this.state` isn't quite as straightforward as something like `this.state.moodPoints++`. Instead, when we want to update a value in React, we will use a method called `this.setState()`. This method helps React update only certain parts of the DOM, resulting in a much faster website!
 
 First, we will create a method to increase the mood. Above the `render()` method, add the method seen here.
