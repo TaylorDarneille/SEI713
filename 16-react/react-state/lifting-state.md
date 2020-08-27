@@ -17,7 +17,7 @@ In React applications, data usually flows from the top down. Why do we care? How
 
 When several components in a view need to share `state`, you lift, or **hoist**, the `state` so that it's available to all the components that need it. Define the state in the highest component you can, so that you can pass it to any components which will need it. Let's look at a search filter as an example. This app will have two basic components - one that displays a list of data, and one that captures user input to filter the data.
 
-### I do: Build a fruit filter
+### We do: Build a fruit filter
 
 Our data will be simple - a list of fruits. The app will end up looking something like this:
 
@@ -27,15 +27,21 @@ When building a React app, it's important to take time to define the app's struc
 
 #### Components
 
-This app needs two components: 1. A list component to display the list of fruit. This component needs one piece of data: the array of fruits to display. 2. An input to capture the filter value from the user. This component needs one piece of data: the current value of the filter.
+This app needs two components: 
+* 1. A `List` component to display the list of fruit. 
+    * This component needs one piece of data: the array of fruits to display.
+* 2. An `input` to capture the filter value from the user.
+    * This component needs one piece of data: the current value of the filter.
 
 #### State
 
-This app needs to keep track of changes in two items: 1. The filtered list of fruits 2. The value of the filter
+This app needs to keep track of changes in two items: 
+* 1. The filtered list of fruits 
+* 2. The value of the filter
 
 #### Component hierarchy
 
-I have two sibling components \(components at the same level of the tree/app\) that need to be aware of each other's data. Specifically, the list component needs to only show the fruits that match the filter value. So I need to get data from one sibling to another. Something like this:
+I have two sibling components \(components at the same level of the tree/app\) that need to be aware of each other's data. Specifically, the `List` component needs to only show the fruits that match the filter value. So I need to get data from one sibling to another. Something like this:
 
 ![basic data flow needed](../../.gitbook/assets/fruit-filter-data.png)
 
@@ -45,24 +51,42 @@ How to achieve this, though? Using unidrectional data flow, of course! If I crea
 
 #### Child components
 
-Now that I know the components I need, the `state` I need, and where everything needs to be, I can start writing some code. First, I'll create the child components. I can use Functional components, since they won't need to hold their own state.
+Now that I know the components I need, the `state` I need, and where everything needs to be, I can start writing some code. First, I'll create the child components.
 
 ```javascript
-const FruitList = props => (
-  <ul>
-     {props.fruits.map(fruit => <li>{fruit}</li>)}
-  </ul>
-)
+import React from 'react';
 
-const FruitFilter = props => (
-  <div>
-    <label htmlFor="fruit-filter">Filter these Fruits: </label>
-    <input type="text" value={props.value} onChange={props.onChange} name="fruit-filter" />
-   </div>
-)
+class List extends Component {
+    render(){
+        return (
+            <ul>
+                {/* list will go here */}
+            </ul>
+        )
+    }
+}
+
+export default List;
 ```
 
-`FruitList` renders an unordered list \(`ul`\) which contains an array of `li` elements, each with a single `fruit` string. `FruitList` uses [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of fruit strings in our data to an array of fruit `li` elements to render. Using `map` to convert data arrays to arrays of UI elements is a common pattern you will use, and see used, in React.
+```jsx
+import React from 'react';
+
+class Input extends Component {
+    render(){
+        return (
+            <div>
+                <label htmlFor="fruit-filter">Filter these Fruits: </label>
+                <input type="text" name="fruit-filter" />
+            </div>
+        )
+    }
+}
+
+export default Input;
+```
+
+`List` renders an unordered list \(`ul`\) which contains an array of `li` elements, each with a single `fruit` string. `FruitList` uses [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to convert the array of fruit strings in our data to an array of fruit `li` elements to render. Using `map` to convert data arrays to arrays of UI elements is a common pattern you will use, and see used, in React.
 
 `FruitFilter` renders a single input. Its value and onChange callbacks will both be set by the container component.
 
