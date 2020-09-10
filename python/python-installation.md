@@ -48,7 +48,6 @@ Here's the tools we're snaggin:
 
     of code.
 
-* **Flask** - a minimalist Python web microframework, much like Express
 * **Django** - a larger Python web framework
 
 Use `brew` to install Python 3!
@@ -57,7 +56,7 @@ Use `brew` to install Python 3!
 brew install python3
 ```
 
-Use `pip`, a Python package installer. `pip` stands for "Pip Installs Packages." Programmers love recursive acronyms.
+Use `pip`, a Python package installer, much like `npm` to `node`. `pip` stands for "Pip Installs Packages." Programmers love recursive acronyms.
 
 Notice, there's two versions of `pip`. One installs things for Python 2 another installs things for Python 3. Use `pip3` to be explicit. If you're lucky, maybe your system uses `pip` for Python 3 by default. Let's assume we're not lucky and always use `pip3`, to be explicit.
 
@@ -68,18 +67,16 @@ pip --version
 pip3 --version
 ```
 
-Should show these, respectively:
+We want to use the one that says:
 
 ```text
-pip 9.0.1 from /Library/Python/2.7/site-packages (python 2.7)
-pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)
+pip 20.1.1 from /usr/local/lib/python3.6/site-packages (python 3.6)
 ```
 
 Ok. let's install stuff:
 
 ```text
 pip3 install ipython
-pip3 install Flask
 pip3 install Django
 ```
 
@@ -88,44 +85,31 @@ Notice that `python` refers to the default system installation of Python 2, and 
 Always use `python3`. Always.
 
 ```text
-python  --version         2.7.10
-python3 --version         3.6.0
-ipython3 --version        5.1.0
-django-admin.py version   # 1.10.5
+python  --version         2.7.16
+python3 --version         3.8.5
+ipython --version         7.18.1
+django-admin.py version   # 3.1.1
 ```
 
-Start `ipython` and verify it uses Python 3 by default. \(Notice that `ipython` and `ipython3` are both legitimate commands. If `ipython` looks like it's using Python 2 then run `ipython3` to be explicit.
-
-We're looking for something like **imPython 3.6.0** at the beginning of the first line here when IPython starts up:
+Start `ipython` and verify it uses Python 3 by default. We're looking for something like **Python 3.6.5** at the beginning of the first line here when IPython starts up:
 
 ```text
-imPython 3.6.0 (default, Dec 24 2016, 08:01:42)
-Type "copyright", "credits" or "license" for more information.
-
-IPython 5.1.0 -- An enhanced Interactive Python.
-?         -> Introduction and overview of IPython's features.
-%quickref -> Quick reference.
-help      -> Python's own help system.
-object?   -> Details about 'object', use 'object??' for extra details.
+Python 3.8.5 (default, Jul 21 2020, 10:42:08)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.18.1 -- An enhanced Interactive Python. Type '?' for help.
 ```
 
 Make sure that you're version numbers are _in the ballpark_ of what you see above.
 
-Great. Python3 and the enhanced IPython shell are all installed. Let's hop into the IPython shell and check to see if Flask and Django were installed properly.
-
-Now run `ipython3` in your Terminal to activate the enhanced IPython shell. We're going to make sure Flask and Django are available for us to import within Python.
+Great. Python3 and the enhanced IPython shell are all installed. Let's hop into the IPython shell and check to see if Django was installed properly.
 
 ```python
-import flask
 import django
-
-print("Flask version:", flask.__version__)
 print("Django version:", django.__version__)
 ```
 
 ```text
-Flask version: 0.12
-Django version: 1.10.5
+Django version: 3.1.1
 ```
 
 Also, while youre in the IPython shell, let's go ahead and check out one of it's awesome features: auto-completion!
@@ -139,24 +123,22 @@ It all looks something like below. How cool is that? Here we are knowing nothing
 Also, it came back and showed me `<function str.upp>` so I added parenthesis so the function was actually called.
 
 ```text
-In [5]: s = "python is awesome"
+In [3]: s='python is awesome'
 
-In [6]: s.
-         s.capitalize   s.isalnum      s.join         s.rsplit
-         s.casefold     s.isalpha      s.ljust        s.rstrip
-         s.center       s.isdecimal    s.lower        s.split
-         s.count        s.isdigit      s.lstrip       s.splitlines
-         s.encode       s.isidentifier s.maketrans    s.startswith
-         s.endswith     s.islower      s.partition    s.strip
-         s.expandtabs   s.isnumeric    s.replace      s.swapcase
-         s.find         s.isprintable  s.rfind        s.title
-         s.format       s.isspace      s.rindex       s.translate
-         s.format_map   s.istitle      s.rjust        s.upper
-         s.index        s.isupper      s.rpartition   s.zfill
-In [7]: s.upper
-Out[7]: <function str.upper>
+In [4]: s.
+           capitalize()   format()       isidentifier() ljust()        rjust()        swapcase()
+           casefold()     format_map()   islower()      lower()        rpartition()   title()
+           center()       index()        isnumeric()    lstrip()       rsplit()       translate()
+           count()        isalnum()      isprintable()  maketrans()    rstrip()       upper()
+           encode()       isalpha()      isspace()      partition()    split()        zfill()
+           endswith()     isascii()      istitle()      replace()      splitlines()
+           expandtabs()   isdecimal()    isupper()      rfind()        startswith()
+           find()         isdigit()      join()         rindex()       strip()
+           
+In [5]: s.upper
+Out[6]: <function str.upper>
 
-In [8]: s.upper()
+In [7]: s.upper()
 Out[8]: 'PYTHON IS AWESOME'
 ```
 
