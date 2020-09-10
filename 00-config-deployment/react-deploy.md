@@ -16,18 +16,12 @@
 
 It's very, very, very, very easy to start up a React app and deploy it to Heroku. Developers have created tools to automate the entire process.
 
-Download and install a command line tool `create-react-app` with npm and make it available globally with the -g flag:
+Use the `npx create-react-app` command in your terminal to create an app, then `cd` into the directory and you can immediately deploy it using a Heroku "buildpack" someone has designed to automatically configure React apps to work on Heroku.
+
+Replace `$APP_NAME`  with whatever you want to call your app directory, and what your want your app's subdomain to be when it's deployed on Heroku.
 
 ```text
-npm install -g create-react-app
-```
-
-Now, use the new `create-react-app` command in your terminal to create an app, then `cd` into the directory and you can immediately deploy it using a Heroku "buildpack" someone has designed to automatically configure React apps to work on Heroku.
-
-Replace $APP\_NAME with whatever you want to call your app directory, and what your want your app's subdomain to be when it's deployed on Heroku.
-
-```text
-create-react-app $APP_NAME
+npx create-react-app $APP_NAME
 cd $APP_NAME
 heroku create $APP_NAME --buildpack https://github.com/mars/create-react-app-buildpack.git
 git add -A
