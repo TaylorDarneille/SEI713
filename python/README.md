@@ -1,10 +1,5 @@
 # Python
 
-## Python Daily Mini-Surveys
-
-Let us know how Python is going. Fill this thing out every day:
-
-[https://docs.google.com/forms/d/e/1FAIpQLSdP64Gw64ZI5Z1LK01MLoHym2jXBuguoYlGvqPsqaPHF4xkqA/viewform](https://docs.google.com/forms/d/e/1FAIpQLSdP64Gw64ZI5Z1LK01MLoHym2jXBuguoYlGvqPsqaPHF4xkqA/viewform)
 
 ## Python
 
