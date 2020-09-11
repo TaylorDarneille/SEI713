@@ -85,7 +85,7 @@ Then, put the following into your `package.json` file:
 },
 ```
 
-* Remove the Heroku-Postbuild script if you are launching a decoupled app.
+* Remove the Heroku-Postbuild script if you are launching a decoupled app and it's in your `package.json`.
 
 ```text
 "scripts": {
@@ -113,29 +113,5 @@ git push heroku master
 * In terminal after you deploy your app, type in `heroku ps:scale web=1`
   * this will scale a dyno up
 
-## Connecting to a MongoDB Database
 
-Before connecting the Node app to a MongoDB database, we'll need to install an addon called [mLab](https://elements.heroku.com/addons/mongolab). mLab is a cloud-hosted MongoDB database service that we can connect to.
-
-In order to add the instance, you can use the Heroku toolbelt by typing this command:
-
-```text
-heroku addons:create mongolab:sandbox
-```
-
-This will create a free database instance, limited to 496 MB in storage. Keep this in mind.
-
-> Tip: While sandbox mode is a free service, you will unfortunately need to add a credit card to your Heroku account in order to take advantage of this. Please let your instructor know if this is a hardship for you, and alternative grading arrangements will be made.
-
-### Configuring Mongoose
-
-After creating the mLab addon, you'll be able to access an environment variable called `MONGODB_URI`. You'll want to connect to this URI on production. Alter your Mongoose connection to read this environment variable, but use the localhost string if the variable doesn't exist. Below is an example.
-
-```javascript
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mydbname');
-```
-
-## Connecting to a mLab instance using Robo 3T \(or similar\)
-
-In order to view the contents of your MongoDB database using a GUI client like Robo 3T, you can use the `MONGODB_URI`. This URI contains the connection information and credentials needed to connect. You can grab the value of this connection string by typing `heroku config` or by logging into the Heroku dashboard.
 
