@@ -112,6 +112,8 @@ git push heroku master
 
 * In terminal after you deploy your app, type in `heroku ps:scale web=1`
   * this will scale a dyno up
+  
+* Go to the heroku website and add the `MONGODB_URI` to your config vars!
 
 
 
