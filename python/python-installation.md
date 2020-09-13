@@ -91,7 +91,7 @@ ipython --version         7.18.1
 django-admin.py version   # 3.1.1
 ```
 
-Start `ipython` and verify it uses Python 3 by default. We're looking for something like **Python 3.6.5** at the beginning of the first line here when IPython starts up:
+Start `ipython` and verify it uses Python 3 by default. We're looking for something like **Python 3.8.5** at the beginning of the first line here when IPython starts up:
 
 ```text
 Python 3.8.5 (default, Jul 21 2020, 10:42:08)
