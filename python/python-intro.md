@@ -302,7 +302,7 @@ a = a[::-1]
 a.append(42)
 [99, 82, 23, 12, 1, 42]
 
-result = a.pop() # the first value is stored in the variable
+result = a.pop() # the last value is stored in the variable
 
 # notice: the value is actually removed from the array
 print(a)
