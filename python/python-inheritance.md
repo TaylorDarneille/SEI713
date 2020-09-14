@@ -49,7 +49,7 @@ class Phone:
 
   def text(self, other_number, msg):
     print("Sending text from {} to {}:".format(self.number, other_number))
-    print(msg);
+    print(msg)
 ```
 
 ```python
