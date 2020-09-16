@@ -303,7 +303,7 @@ User input
 
 ## Additional Resources
 
-* [Socratica Video: Text Files](https://www.youtube.com/watch?v=H_R5yRtFtuc)
+* [Socratica Video: Text Files](https://www.youtube.com/watch?v=4mX0uPQFLDU)
 * [Executing a Python Script](https://www.python-course.eu/python3_execute_script.php)
 * [Reading and Writing Files](http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python)
 * [File Object Documentation](https://www.tutorialspoint.com/python3/python_files_io.htm)
