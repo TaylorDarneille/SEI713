@@ -48,6 +48,7 @@ This is a way we can create the database without being inside the psql command-l
        age = models.IntegerField()
    ```
 
+Django models are classes where each field corresponds to a column in the database. 
 Read more about models in Django and how to use the built-in Django ORM [here](https://docs.djangoproject.com/en/3.1/topics/db/models/)
 
 2. Once we create or modify any model that we want to use in Django, we must run a database `migration`. A migration is a database action that makes any necessary changes to your db tables to prepare for storing specific data attributes of your models. If we create a new model, the migration is what actually creates the table in the database. If we change the structure of a model, the migration makes the changes in the database.
@@ -100,6 +101,8 @@ def __str__(self):
     return self.name
 ```
 
+*You will need to quit and restart the shell to test the new string method*
+
 ### Common ORM Operations
 
 #### Create One New Record
@@ -151,7 +154,7 @@ def cats_index(request):
 # remove the cat class and list at the bottom...
 ```
 
-Reload your page and you should see a single Cat displayed from your database! You're a wizard, Harry!
+Reload your page and you should see a new cats displayed from your database! You're a wizard, Harry!
 
 ![](https://media.giphy.com/media/IN8gg3Gci335S/giphy.gif)
 
