@@ -345,7 +345,7 @@ First, we need to understand that Django expects us to put these files in a very
 
 ```html
   <!-- Add the following line... -->
-  {% load staticfiles %}
+  {% load static %}
   <!DOCTYPE html>
   <html>
     <head>
@@ -361,7 +361,7 @@ When we link in our stylesheet, we set the href like above. Using the `static` k
 5. We can also add in a CSS framework like Materialize in the normal way:
 
 	```html
-	{% load staticfiles %}
+	{% load static %}
 	<!DOCTYPE html>
 	<html>
 	  <head>
