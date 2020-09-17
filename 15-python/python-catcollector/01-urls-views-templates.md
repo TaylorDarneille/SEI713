@@ -26,9 +26,9 @@ Just like in Express, and other web server frameworks, Django gives us the abili
 
 	This will create a folder named `catcollector` as well as a few support files and a folder within with the same name. Let's look at some of the key files:
 
-	- settings.py will hold the settings for our project. Things like our database connection info and other Python modules that we want to use go in here.
-	- urls.py is the main routing file for our project.
-	- manage.py gives us access to common functions we'll perform on our app (running the server, applying migrations, etc.)
+	- `settings.py` will hold the settings for our project. Things like our database connection info and other Python modules that we want to use go in here.
+	- `urls.py` is the main routing file for our project.
+	- `manage.py` gives us access to common functions we'll perform on our app (running the server, applying migrations, etc.)
 
 2.  To see the barebones website that Django made for us, run the following command:
 
@@ -38,15 +38,15 @@ Just like in Express, and other web server frameworks, Django gives us the abili
 
 	This will throw some migration errors which we can ignore for now. Head to the location given in your terminal and you should see a boilerplate greeting page for Django!
 
-3.  We have created a Django project but a project is not really an application. It is more of a way to organize one or many related smaller apps. In Django, we create a project and then we create our primary app inside it. Let's do that now with the manage.py utility `startapp` to create our first app inside our Django project:
+3.  We have created a Django project but a project is not really an application. It is more of a way to organize one or many related smaller apps. In Django, we create a project and then we create our primary app inside it. Let's do that now with the `manage.py` utility `startapp` to create our first app inside our Django project:
 
 	```bash
 	django-admin startapp main_app
 	```
 
 	This will create a folder for `main_app` with many support files inside. Let's review some of the main ones:
-	- models.py is where we define all of our data models. We will see that this afternoon.
-	- views.py is where we write the logic that happens when someone requests one of our URLs.
+	- `models.py` is where we define all of our data models. We will see that this afternoon.
+	- `views.py` is where we write the logic that happens when someone requests one of our URLs.
 
   We need to make sure we add this new app to our Django project. It doesn't happen automatically. In  `catcollector/catcollector/settings.py` include our 'main_app':
 
@@ -62,7 +62,7 @@ Just like in Express, and other web server frameworks, Django gives us the abili
   ]
   ```
 
-4.  We will now work on our first view. A view is a function that takes in a web request and returns a web response. Together with the URL patterns we define in our `urls.py` file, these make up the `Controller` portion of the Model-View-Controller design pattern. Django's use the the term "view" to describe controller actions is actually at odds with the rest of the MVC framework world. Only in Django does the word "view" refer to router functions. Everywhere else, the `View` portion of MVC refers to the front-end, or what the client sees. But in Django, when we write a view function, we are basically writing how our server will respond when a client requests a specific resource. **In Express, the URL and the route function are usually referred to collectively as the route. However, we have seen that it is possible to separate these out in Express. This is exactly what Django is doing: separating the declaration of the URL from the function that runs when the URL is requested.**
+4.  We will now work on our first view. A view is a function that takes in a web request and returns a web response. Together with the URL patterns we define in our `urls.py` file, these make up the `Controller` portion of the Model-View-Controller design pattern. Django's use of the term "view" to describe controller actions is actually at odds with the rest of the MVC framework world. Only in Django does the word "view" refer to router functions. Everywhere else, the `View` portion of MVC refers to the front-end, or what the client sees. But in Django, when we write a view function, we are basically writing how our server will respond when a client requests a specific resource. **In Express, the URL and the route function are usually referred to collectively as the route. However, we have seen that it is possible to separate these out in Express. This is exactly what Django is doing: separating the declaration of the URL from the function that runs when the URL is requested.**
 
 	```python
     # main_app/views.py
