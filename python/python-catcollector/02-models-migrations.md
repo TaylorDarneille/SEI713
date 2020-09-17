@@ -45,8 +45,10 @@ This is a way we can create the database without being inside the psql command-l
        name = models.CharField(max_length=100)
        breed = models.CharField(max_length=100)
        description = models.CharField(max_length=250)
-     age = models.IntegerField()
+       age = models.IntegerField()
    ```
+
+Read more about models in Django and how to use the built-in Django ORM [here](https://docs.djangoproject.com/en/3.1/topics/db/models/)
 
 2. Once we create or modify any model that we want to use in Django, we must run a database `migration`. A migration is a database action that makes any necessary changes to your db tables to prepare for storing specific data attributes of your models. If we create a new model, the migration is what actually creates the table in the database. If we change the structure of a model, the migration makes the changes in the database.
 
