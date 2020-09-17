@@ -168,7 +168,7 @@ Let's start with a simple template for our "about" page.
 </html>
 ```
 
-3. In our `views.py` we will now be **rendering** our template instead of sending HTTP responses, so so we can update our `views.py` to comment out the import of `HttpResponse`.
+3. In our `views.py` we will now be **rendering** our template instead of sending HTTP responses, so we can update our `views.py` to comment out the import of `HttpResponse`.
 
 4. Finally, in our index function in our `views.py` file, lets update the render to show our about.html:
 
