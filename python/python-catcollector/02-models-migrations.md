@@ -289,7 +289,9 @@ We're beginning to see repeated code in our html templates so it makes sense to 
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
      </head>
      <body>
-           <h1>catcollector</h1>
+        <a href="/cats">
+            <h1>catcollector</h1>
+        </a>
        <hr />
 
            {% block content %}
