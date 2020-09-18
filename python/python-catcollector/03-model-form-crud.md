@@ -71,11 +71,7 @@ That takes care of all the View code, but each of these views need a form templa
 {% endblock %}
 ```
 
-There is a lot of Django template syntax in here so let's go over it. We are still putting our relevant content inside the \`
-
-`section. Inside there we see an HTMLelement with some things inside it. The`
-
-`is a security measure that makes it more difficult to forge illegal requests against our server. It is called a Cross-Site Request Forgery token. Django generates it for every potential form submission and the form must return it to Django in order to be accepted. All we must do is include that line and everything works! Then we have an HTMLwith some Django syntax inside it. We add in`\` which creates a table for us and generates the form fields inside that table. The last thing we add is a "submit" button.
+There is a lot of Django template syntax in here so let's go over it. We are still putting our relevant content inside the `block content` section. Inside there we see an HTML form element with some things inside it. The`csrf_token`is a security measure that makes it more difficult to forge illegal requests against our server. It is called a Cross-Site Request Forgery token. Django generates it for every potential form submission and the form must return it to Django in order to be accepted. All we must do is include that line and everything works! Then we have an HTML table with some Django syntax inside it. We add in `form.as_table` which creates a table for us and generates the form fields inside that table. The last thing we add is a "submit" button.
 
 This form will be used for both `creating` and `updating`. The `delete` operation wants another file present. It will be used to confirm the deletion, basically asking the user if they are sure about what they are doing. In the same directory, create `cat_confirm_delete.html` and fill it thusly:
 
@@ -106,7 +102,7 @@ path('cats/<int:pk>/delete/', views.CatDelete.as_view(), name='cats_delete'),
 
 We can see some routes here that use Django's syntax for variable in URLs. But in this case, we cannot choose what we name them. They must always be type `int` and be named `pk`. This stands for `primary key` and it is the variable name that Django expects the Cat ID to be in. This is another Django convention that we must accept. The only other parameter of note is the one that links the URL to the view. Basically, it is saying to look in the `views.py` file, find the relevant form class in there, then use it as the view function for this URL.
 
-But now we are done! These are our data access URLs. Whenever we want to add a new Cat, we can hit `http://localhost:8000/cats/create` and Django will send us a form with all the fields in it for adding a new Cat to the database. When we fill out the form and submit it, Django will receive the data, validate it, and write it to the database if it passes validation. The same stuff happens if we want to modify a Cat: we hit the URL `http://localhost:8000/cats/3/update`, passing in whichever Cat's ID we want to use. Then a form with that Cat's data is sent to us so we can edit the values. Then we submit that back to the server where it is validated and stored. The form classes that we used make all this happen automatically.
+But now we are done! These are our data access URLs. Whenever we want to add a new Cat, we can hit `http://localhost:8000/cats/create` and Django will send us a form with all the fields in it for adding a new Cat to the database. When we fill out the form and submit it, Django will receive the data, validate it, and write it to the database if it passes validation. The same stuff happens if we want to modify a Cat: we hit the URL `http://localhost:8000/cats/3/update`, passing in whichever Cat's ID we want to use. Then a form with that Cat's data is sent to us so we can edit the values. Then we submit that back to the server where it is validated and stored. The form classes that we used make all this happen automatically. Also test out `http://localhost:8000/cats/3/delte` to see the confirm delete page and test the delete functionality!
 
 ## Testing it all in the browser
 
@@ -128,17 +124,15 @@ When we create a new Cat, it really has nothing to do with any other Cat in the 
 
 ```markup
   <!-- templates/cats/index.html -->
-  ...
-  <h1>Cat List</h1>
-  <!-- After the header, add this line -->
   <a href="/cats/create">Add a New Cat!</a>
+  <hr />
 ```
 
 Now on the page where Django loops through all of our Cats and renders them all into the page, at the top will be a link for adding a new Cat. Clicking it will send the user a form for adding a new Cat.
 
 ### Update & Delete
 
-The `Update` and `Delete` operations work on only one Cat at a time so these make more sense to have as part of each Cat's data section on the collection index. However, these are both `destructive` database operations, which means that they have the capability of changing or removing data in an irreversible way. As a result, we usually add a little bit more exclusivity to these operations because we don't want anyone doing them by accident. Instead of having them on the main Cats index page, let's put them into the `show/details` page for each Cat so you must view a Cat's details in order to have the links for updating and deleting that Cat to appear.
+The `Update` and `Delete` operations work on only one Cat at a time so these make more sense to have as part of each Cat's data section on the collection index. However, these are both `destructive` database operations, which means that they have the capability of changing or removing data in an irreversible way. As a result, we usually add a little bit more exclusivity to these operations because we don't want anyone doing them by accident. Instead of having them on the main Cats index page, let's put them into the `show/details` page for each Cat so you must view a Cat's details in order to have the links for updating and deleting that Cat to appear. We threw some materialize in there too to make things a bit fancier.
 
 ```markup
 <!-- templates/cats/detail.html -->
