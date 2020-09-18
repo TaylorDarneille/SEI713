@@ -284,7 +284,7 @@ We're beginning to see repeated code in our html templates so it makes sense to 
    <!DOCTYPE html>
    <html>
      <head>
-       <title>catcollector</title>
+       <title>CatCollector</title>
        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
      </head>
@@ -306,15 +306,13 @@ We're beginning to see repeated code in our html templates so it makes sense to 
 
 2. In `cats/index.html` we will tell the templating language to send our html to `base.html` with a single line added to the top of the page. We will also wrap our pertinent Cat iterator in the `block content` and `endblock` template tags to designate what gets loaded into our `base.html` dynamically.
 
-   ```markup
-   <!-- main_app/templates/cats/index.html -->
-   {% extends 'base.html' %}
-   {% load staticfiles %}
+```markup
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ ... index iterator goes here ...
+{% endblock %}
+ ```
 
-   {% block content %}
-       ... index's iterator code goes in here ...
-   {% endblock %}
-   ```
-
-   Now try out our root route on the browser and you should see no change. Apply this code refactor to our show.html as well. Good work!
+   Now try out our `/cats` route on the browser and you should see no change. Apply this code refactor to our show.html as well. Good work!
 
