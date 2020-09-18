@@ -225,33 +225,32 @@ The pattern of creating a new url in `urls.py`, a new view function in `views.py
         return render(request, 'cats/show.html', {'cat': cat})
 ```
 
-```text
+
 You'll notice that we are searching by id. Django automatically assigns our models incrementing id numbers to organize our tables. Thanks Django!  That way we can look up every single cat by their unique `id` given to us. That `id` will travel with every model so we don't have to worry about assigning them one or trying to maintain it in the back-end! SO SWEET!
 
 After we have made the DB call to retrieve our model, we will render a new view of the `show.html` template and pass in our model as an object for the template to use.
-```
+
 
 1. We will now create a `show.html` template page in `templates/cats` to render our single model view:
 
    ```markup
-   <!-- main_app/templates/cats/show.html -->
-   {% load staticfiles %}
-   <!DOCTYPE html>
-   <html>
-     <head>
-       <title>catcollector</title>
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-       <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-     </head>
-     <body>
-       <h1>catcollector</h1>
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>catcollector</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <h1>catcollector</h1>
 
-       <h2> Name: {{ cat.name }}</h1>
-       <p> Breed: {{ cat.breed }}</p>
-       <p> Description: {{ cat.description }}</p>
-       <p> Age: {{ cat.age }}</p>
-     </body>
-   </html>
+    <h2> Name: {{ cat.name }}</h1>
+    <p> Breed: {{ cat.breed }}</p>
+    <p> Description: {{ cat.description }}</p>
+    <p> Age: {{ cat.age }}</p>
+  </body>
+</html>
    ```
 
 2. We can now view a single Cat on its dedicated show page! Awesome! To make our application actually useful, we need to create a link from our `index.html` listing of the Cats over to our `show.html` page. Wrap the entire iteration of each Cat in an anchor tag in our `index.html` page:
@@ -260,7 +259,7 @@ After we have made the DB call to retrieve our model, we will render a new view 
    <!-- main_app/templates/cats/index.html -->
    ...
    {% for cat in cats %}
-     <a href="/{{cat.id}}">
+     <a href="/cats/{{cat.id}}">
        <p>Name: {{ cat.name }}</p>
      {% if cat.age > 0 %}
        <p>Age: {{ cat.age }}</p>
@@ -281,7 +280,7 @@ We're beginning to see repeated code in our html templates so it makes sense to 
 1. Create a new `base.html` file within our templates folder. This will be our base 'layout' html file:
 
    ```markup
-   {% load staticfiles %}
+   {% load static %}
    <!DOCTYPE html>
    <html>
      <head>
