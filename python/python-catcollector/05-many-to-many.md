@@ -95,9 +95,9 @@ def cattoys_index(request):
     cattoys = CatToy.objects.all()
     return render(request, 'cattoys/index.html', { 'cattoys': cattoys })
 
-def cattoys_detail(request, cattoy_id):
+def cattoys_show(request, cattoy_id):
     cattoy = CatToy.objects.get(id=cattoy_id)
-    return render(request, 'cattoys/detail.html', { 'cattoy': cattoy })
+    return render(request, 'cattoys/show.html', { 'cattoy': cattoy })
 ```
 
 ## Templates
@@ -136,10 +136,10 @@ Lastly, we need a few templates for this new model. We need the two forms for ou
 {% endblock %}
 ```
 
-Now we'll add the two "read" pages, `cattoys\index.html` and `cattoys\detail.html`. We need to make a directory inside our `templates` directory named `cattoys` and our pages will go in there:
+Now we'll add the two "read" pages, `cattoys\index.html` and `cattoys\show.html`. We need to make a directory inside our `templates` directory named `cattoys` and our pages will go in there:
 
 ```markup
-<!-- templates/cattoys/detail.html -->
+<!-- templates/cattoys/show.html -->
 {% extends 'base.html' %}
 {% block content %}
 
