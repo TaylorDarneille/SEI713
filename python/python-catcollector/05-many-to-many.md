@@ -226,12 +226,12 @@ class CatUpdate(UpdateView):
 
 Save everything, restart the server if necessary and visit the Cat Create page. Yay! Now we can add multiple cat toys to any of our Cats.
 
-## Add `cattoys` to the Cat detail page
+## Add `cattoys` to the Cat show page
 
-In the style of our detail pages so far, let's add something to show toys. Right above the `for` block for the photos in `cats/detail.html`, add this code:
+In the style of our detail pages so far, let's add something to show toys. Right above the `for` block for the photos in `cats/show.html`, add this code:
 
 ```markup
-<!-- templates/cats/detail.html -->
+<!-- templates/cats/show.html -->
 <!-- above section for photos -->
 ...
 {% for cattoy in cat.cattoys.all %}
@@ -247,21 +247,17 @@ In the style of our detail pages so far, let's add something to show toys. Right
 Because this is a many-to-many, it probably makes sense to show all the related Cats that own any particular toy. Let's update the `cattoys/detail.html` page.
 
 ```markup
-<!-- templates/cattoys/detail.html -->
+<!-- templates/cattoys/show.html -->
 <!-- above section for photos -->
 ...
-        </div>
-        <!-- New Code below here -->
-        Owned by:
-        {% for cat in cattoy.cat_set.all %}
-            <div>{{cat.name}}</div>
-        {% empty %}
-            <div>Nobody Has This Toy</div>
-        {% endfor %}
-        <!-- New Code above here -->
-    </div>
-</div>
-{% endblock %}
+                <span class="card-title">{{ cattoy.name }}</span>
+                <p>Color: {{ cattoy.color }}</p>
+                <p>Owned by:</p>
+                {% for cat in cattoy.cat_set.all %}
+                    <p>{{cat.name}}</p>
+                {% empty %}
+                    <p>Nobody Has This Toy</p>
+                {% endfor %}
 ...
 ```
 
