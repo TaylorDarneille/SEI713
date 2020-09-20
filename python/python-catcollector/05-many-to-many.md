@@ -244,7 +244,7 @@ In the style of our detail pages so far, let's add something to show toys. Right
 
 ## Add Cat owners to CatToy detail page
 
-Because this is a many-to-many, it probably makes sense to show all the related Cats that own any particular toy. Let's update the `cattoys/detail.html` page.
+Because this is a many-to-many, it probably makes sense to show all the related Cats that own any particular toy. Let's update the `cattoys/show.html` page.
 
 ```markup
 <!-- templates/cattoys/show.html -->
