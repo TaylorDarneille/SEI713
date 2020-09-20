@@ -195,6 +195,8 @@ class Cat(models.Model):
     ...
 ```
 
+You'll notice that this line doesn't know what `CatToy` is if your `CatToy` class is below you `Cat` class. If you're running into this issues, swap the position of the two models in the file.
+
 That is really all we need to do to set up the relationship. But we have changed a model so we now need to generate some new migrations and run them. Open up a terminal and run these commands from your project folder:
 
 ```bash
