@@ -117,14 +117,14 @@ Lastly, we create a `profile.html` template to show a single User and all of the
 
 ```markup
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block content %}
 
 <h1>{{ username }}'s collection:</h1>
 
 {% for cat in cats %}
-<a href="/{{ cat.id }}">
+<a href="/cats/{{ cat.id }}">
   <h3>{{ cat.name }}</h3>
 </a>
 
@@ -138,28 +138,24 @@ Let's also update our `cats/index.html` page to allow us to inspect each user:
 ```markup
 <!-- main_app/templates/index.html -->
 {% extends 'base.html' %}
-{% load staticfiles %}
-
-  {% block content %}
-  {% for cat in cats %}
-    <a href="/{{cat.id}}">
-      <p>Name: {{ cat.name }}</p>
-    </a>
-    <a href="/user/{{cat.user.username}}"
-      <p>Adopted By: {{cat.user.username }}</p>
-    </a>
-    {% if cat.age > 0 %}
-      <p>Age: {{ cat.age }}</p>
-    {% else %}
-      <p>Age: Kitten</p>
-    {% endif %}
+{% load static %}
+{% block content %}
+    <a href="/cats/create">Add a New Cat!</a>
     <hr />
-  {% endfor %}
-  <form action="post_url/" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Submit" />
-  </form>
+    {% for cat in cats %}
+      <a href='/cats/{{cat.id}}'>
+        <p>Name: {{ cat.name }}</p>
+      </a>
+      <a href='/user/{{cat.user.username}}'>
+        <p>Adopted By: {{cat.user.username}}</p>
+      </a>
+        {% if cat.age > 0 %}
+          <p>Age: {{ cat.age }}</p>
+        {% else %}
+          <p>Age: Kitten</p>
+        {% endif %}
+        <hr />
+        {% endfor %}
 {% endblock %}
 ```
 
