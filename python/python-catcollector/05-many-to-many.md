@@ -24,9 +24,6 @@ class CatToy(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse('cattoys_detail', kwargs={'cattoy_id': self.id})
 ```
 
 We don't need to represent much data about the toys to set up the relationship. We've included a `__str__` method so that the Model will nicely print its name. We also included a `get_absolute_url()` method that will allow us to omit all the `success_urls` and redirect URLs from our generic editing views. Once we've added this, save the file, make new migrations, and run them:
@@ -75,29 +72,22 @@ We can also use the same patterns for our corrsponding view functions as we used
 # import the CatToy model
 from .models import Cat, CatToy
 
-# Add these CatToy Form classes
+def cattoys_index(request):
+    cattoys = CatToy.objects.all()
+    return render(request, 'cattoys/index.html', {'cattoys': cattoys})
 
-class CatToyCreate(CreateView):
-    model = CatToy
-    fields = '__all__'
+def cattoys_show(request, cattoy_id):
+    cattoy = CatToy.objects.get(id=cattoy_id)
+    return render(request, 'cattoys/show.html', {'cattoy': cattoy})
 
 class CatToyUpdate(UpdateView):
     model = CatToy
     fields = ['name', 'color']
+    success_url = '/cattoys'
 
 class CatToyDelete(DeleteView):
     model = CatToy
     success_url = '/cattoys'
-
-# Add these CatToy View functions
-
-def cattoys_index(request):
-    cattoys = CatToy.objects.all()
-    return render(request, 'cattoys/index.html', { 'cattoys': cattoys })
-
-def cattoys_show(request, cattoy_id):
-    cattoy = CatToy.objects.get(id=cattoy_id)
-    return render(request, 'cattoys/show.html', { 'cattoy': cattoy })
 ```
 
 ## Templates
@@ -171,7 +161,7 @@ Now we'll add the two "read" pages, `cattoys\index.html` and `cattoys\show.html`
 
 {% for cattoy in cattoys %}
     <div class="card">
-        <a href="{% url 'cattoys_detail' cattoy.id %}">
+        <a href="{% url 'cattoys_show' cattoy.id %}">
             <div class="card-content">
                 <span class="card-title">{{ cattoy.name }}</span>
                 <p>Color: {{ cattoy.color }}</p>
@@ -189,7 +179,7 @@ This is a great place to test what we've written. We've just added 5 new routes.
 
 1. Test `http://localhost:8000/cattoys/create` for creating new cat toys. Add a couple.
 2. Test `http://localhost:8000/cattoys` for showing the toys you've added.
-3. Click into one of the toys to test the `details` page.
+3. Click into one of the toys to test the `show` page.
 4. Test the update link on one of the toys.
 5. Test the delete link for one of the toys.
 
