@@ -135,18 +135,14 @@ Now we'll add the two "read" pages, `cattoys\index.html` and `cattoys\show.html`
 
 <h1>Cat Toy Details</h1>
 
-<div class="row">
-    <div class="col s6">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{ cattoy.name }}</span>
-                <p>Color: {{ cattoy.color }}</p>
-            </div>
-            <div class="card-action">
-                <a href="{% url 'cattoys_update' cattoy.id %}">Edit</a>
-                <a href="{% url 'cattoys_delete' cattoy.id %}">Delete</a>
-            </div>
-        </div>
+<div>
+    <div>
+        <span>{{ cattoy.name }}</span>
+        <p>Color: {{ cattoy.color }}</p>
+    </div>
+    <div>
+        <a href="{% url 'cattoys_update' cattoy.id %}">Edit</a>
+        <a href="{% url 'cattoys_delete' cattoy.id %}">Delete</a>
     </div>
 </div>
 {% endblock %}
@@ -160,10 +156,10 @@ Now we'll add the two "read" pages, `cattoys\index.html` and `cattoys\show.html`
 <h1>Cat Toy List</h1>
 
 {% for cattoy in cattoys %}
-    <div class="card">
+    <div>
         <a href="{% url 'cattoys_show' cattoy.id %}">
             <div class="card-content">
-                <span class="card-title">{{ cattoy.name }}</span>
+                <span>{{ cattoy.name }}</span>
                 <p>Color: {{ cattoy.color }}</p>
             </div>
         </a>
@@ -232,7 +228,7 @@ In the style of our detail pages so far, let's add something to show toys. Right
 
 ```markup
 <!-- templates/cats/show.html -->
-<!-- above section for photos -->
+<!-- above the update and delete links -->
 ...
 {% for cattoy in cat.cattoys.all %}
     <div>{{cattoy.name}}, Color: {{cattoy.color}}</div>
@@ -248,16 +244,17 @@ Because this is a many-to-many, it probably makes sense to show all the related 
 
 ```markup
 <!-- templates/cattoys/show.html -->
-<!-- above section for photos -->
 ...
-                <span class="card-title">{{ cattoy.name }}</span>
-                <p>Color: {{ cattoy.color }}</p>
-                <p>Owned by:</p>
-                {% for cat in cattoy.cat_set.all %}
-                    <p>{{cat.name}}</p>
-                {% empty %}
-                    <p>Nobody Has This Toy</p>
-                {% endfor %}
+    <div>
+        <span>{{ cattoy.name }}</span>
+        <p>Color: {{ cattoy.color }}</p>
+        <p>Owned by:</p>
+        {% for cat in cattoy.cat_set.all %}
+            <p>{{cat.name}}</p>
+        {% empty %}
+            <p>Nobody Has This Toy</p>
+        {% endfor %}
+    </div>
 ...
 ```
 
