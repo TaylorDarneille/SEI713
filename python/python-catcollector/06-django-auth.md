@@ -201,8 +201,8 @@ Finally, let's add the log in and log out links to our site. Let's add it to our
       <span><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a></span>
       <span> | </span>
       <span><a href="{% url 'logout' %}">Logout</a></span>
-      {% else %}
       <span> | </span>
+      {% else %}
       <span><a href="{% url 'login' %}">Login</a></span>
       <span> | </span>
       <span><a href="{% url 'signup' %}">SignUp</a></span>
