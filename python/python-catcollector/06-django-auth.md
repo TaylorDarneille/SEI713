@@ -111,11 +111,13 @@ path('login/', views.login_view, name="login")
 ...
 ```
 
-In `main_app/forms.py`, add a login form below the others:
+Create a `forms.py` file inside `main_app` (not in templates) and add the following code:
 
 ```python
+from django import forms
+
 class LoginForm(forms.Form):
-    username = forms.CharField(label="User Name", max_length=64)
+    username = forms.CharField(label='user name', max_length=64)
     password = forms.CharField(widget=forms.PasswordInput())
 ```
 
@@ -124,30 +126,32 @@ Let's add the `login_view` function in `main_app/views.py`:
 ```python
 ...
 # Add LoginForm to this line...
-from .forms import CatForm, LoginForm
+from .forms import LoginForm
 # ...and add the following line...
 from django.contrib.auth import authenticate, login, logout
 ...
 def login_view(request):
+     # if post, then authenticate (user submitted username and password)
     if request.method == 'POST':
-        # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
         if form.is_valid():
             u = form.cleaned_data['username']
             p = form.cleaned_data['password']
             user = authenticate(username = u, password = p)
             if user is not None:
-                if user. is_active:
+                if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect('/user/'+u)
                 else:
-                    print("The account has been disabled.")
+                    print('The account has been disabled.')
             else:
-                print("The username and/or password is incorrect.")
-    else:
+                print('The username and/or password is incorrect.')
+    else: # it was a get request so send the emtpy login form
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
 ```
+
+Read more about the [cleaned_data](https://docs.djangoproject.com/en/3.1/ref/forms/api/#accessing-clean-data)
 
 Finally, we'll add a new file for the `login.html` template:
 
