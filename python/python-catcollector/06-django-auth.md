@@ -339,11 +339,11 @@ Let's also update our `cats/index.html` page to allow us to inspect each user. P
 
 ### Conclusion
 
-That was the whirlwind tour of Django authentication. There is a lot more you could spend time learning about authentication but this takes care of what you will need to meet project requirements. Django makes the process very simple. When we get into authentication with Node/Express, you will get a deeper understanding of how authentication works and a new perspective from learning a new auth strategy: OAuth.
-
-Authentication is incredibly important in web development. We make public-facing, data-aware products that can contain very sensitive information. Authentication helps us protect that information as well as protecting our server or clients from being used in larger cyber attacks. I urge you all to learn as much as you can about security.
+That was the whirlwind tour of Django authentication. There is a lot more you could spend time learning about authentication but this takes care of what you will need to meet project requirements. Django makes the process very simple. Authentication is incredibly important in web development. We make public-facing, data-aware products that can contain very sensitive information. Authentication helps us protect that information as well as protecting our server or clients from being used in larger cyber attacks. I urge you all to learn as much as you can about security.
 
 ### Further Reading
 
-[Django Authentication System](https://docs.djangoproject.com/en/2.1/topics/auth/default/) [OWASP Top 10 Security Concerns](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf) [OWASP Session Management](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
+* [MDN Docs/Tutorial for implementing the built-in authentication in Django 3.1](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication)
+* [OWASP Top 10 Security Concerns](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
+* [OWASP Session Management](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
 
