@@ -124,7 +124,6 @@ def login_view(request):
      # if post, then authenticate (user submitted username and password)
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
-        # form = LoginForm(request.POST)
         if form.is_valid():
             u = form.cleaned_data['username']
             p = form.cleaned_data['password']
@@ -138,7 +137,6 @@ def login_view(request):
             else:
                 print('The username and/or password is incorrect.')
     else: # it was a get request so send the emtpy login form
-        # form = LoginForm()
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
 ```
