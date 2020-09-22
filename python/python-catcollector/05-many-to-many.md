@@ -231,7 +231,7 @@ In the style of our detail pages so far, let's add something to show toys. Right
 <!-- above the update and delete links -->
 ...
 {% for cattoy in cat.cattoys.all %}
-    <div>{{cattoy.name}}, Color: {{cattoy.color}}</div>
+    <div>{{cattoy.name}}</div>
 {% empty %}
     <div>Cat Has No Toys :(</div>
 {% endfor %}
