@@ -279,6 +279,8 @@ The `@login_required` decorator is what we use on plain view functions \(the kin
 
 Now deleting a cat and viewing a user's profile actually require you to **authenticate**! We have protected our cats!
 
+What other views should we protect?
+
 ### Seeing the user's cats
 
 Now we need to add a view to see a User's profile. This will repeat the same, familiar pattern:
