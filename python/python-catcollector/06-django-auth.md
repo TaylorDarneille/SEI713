@@ -189,24 +189,29 @@ Create the corresponding `main_app/views.py` logout\_view function:
 ...
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/cats')
 ...
 ```
 
 Finally, let's add the log in and log out links to our site. Let's add it to our `base.html` since we want it to be accessible from every view. Add these lines under the link for "View All My Cats":
 
 ```markup
-{% if user.is_authenticated %}
-    <li> | </li>
-    <li><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a></li>
-    <li> | </li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
-{% else %}
-    <li> | </li>
-    <li><a href="{% url 'login' %}">Login</a></li>
-    <li> | </li>
-    <li><a href="{% url 'signup' %}">SignUp</a></li>
-{% endif %}
+    <header>
+      {% if user.is_authenticated %}
+      <span><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a></span>
+      <span> | </span>
+      <span><a href="{% url 'logout' %}">Logout</a></span>
+      {% else %}
+      <span> | </span>
+      <span><a href="{% url 'login' %}">Login</a></span>
+      <span> | </span>
+      <span><a href="{% url 'signup' %}">SignUp</a></span>
+      {% endif %}
+      <a href="/cats">
+          <h1>catcollector</h1>
+      </a>
+    </header>
+    <hr />
 ```
 
 Awesome! Now we have login and logout functionality and the ability to see if you're currently logged in!
