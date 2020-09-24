@@ -58,7 +58,7 @@ We will need 5 total routes for this new Model: read all, read one, create one, 
 
 ```python
 path('cattoys/', views.cattoys_index, name='cattoys_index'),
-path('cattoys/<int:cattoy_id>', views.cattoys_detail, name='cattoys_detail'),
+path('cattoys/<int:cattoy_id>', views.cattoys_show, name='cattoys_show'),
 path('cattoys/create/', views.CatToyCreate.as_view(), name='cattoys_create'),
 path('cattoys/<int:pk>/update/', views.CatToyUpdate.as_view(), name='cattoys_update'),
 path('cattoys/<int:pk>/delete/', views.CatToyDelete.as_view(), name='cattoys_delete'),
@@ -121,7 +121,7 @@ Lastly, we need a few templates for this new model. We need the two forms for ou
     <form action="" method="POST">
         {% csrf_token %}
         <input type="submit" value="Yes - Delete!">
-        <a href="{% url 'cattoys_detail' cattoy.id %}">Cancel</a>
+        <a href="{% url 'cattoys_show' cattoy.id %}">Cancel</a>
     </form>
 {% endblock %}
 ```
