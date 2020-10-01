@@ -69,7 +69,7 @@ Your Procfile should look like the following:
 
 ```text
 web: gunicorn yourappname.wsgi
-release: python manage.py migrate
+release: python3 manage.py migrate
 ```
 
 Obviously, replace `yourappname` with your actual app name. The release command will do any database migrations that are needed upon deployment.
