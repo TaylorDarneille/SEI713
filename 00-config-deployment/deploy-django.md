@@ -72,7 +72,7 @@ web: gunicorn yourappname.wsgi
 release: python3 manage.py migrate
 ```
 
-Obviously, replace `yourappname` with your actual app name. The release command will do any database migrations that are needed upon deployment.
+Replace `yourappname` with your actual app name. The release command will do any database migrations that are needed upon deployment.
 
 ## Static Assets and Whitenoise
 
