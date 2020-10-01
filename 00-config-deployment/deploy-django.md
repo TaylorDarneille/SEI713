@@ -98,7 +98,7 @@ The third option is to make an environment variable that you check in your setti
 
 The fourth option is to use a third party tool that handles it for you.
 
-> NOTE: In a professional setting, you'll have a test environment \(and possibly a staging environment\) too! Test environments typically mirror production and act as a place you can test things outside of your local machine so that code doesn't go straight from development to production.
+> NOTE: In a professional setting, you'll have a test environment \(and possibly a staging environment too!\) Test environments typically mirror production and act as a place you can test things outside of your local machine so that code doesn't go straight from development to production.
 
 ### Splitting up settings
 
