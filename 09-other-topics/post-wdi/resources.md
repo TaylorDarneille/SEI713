@@ -17,6 +17,7 @@
 * [Paid General Resources](resources.md#paid-general-resources)
 * [Interview Prep](resources.md#interview-prep)
 * [Freelancing](resources.md#freelancing)
+* [Other](resources.md#other)
 
 ## HTML/CSS
 
@@ -119,6 +120,7 @@ Increasing Development Speed
 
 * [Touch typing](http://typing.lk/)
 * [Programming language typing](https://typing.io/)
+* Nerd out on some VS Code extensions like [these ones](https://blog.bitsrc.io/16-unique-vscode-extensions-every-developer-should-have-in-2020-c4dcdb74506a)
 * [Sublime Shortcuts](http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html)
 * Many people swear by VIM as their text editor \(due to keyboard shortcuts\)
   * [Learn vim](http://www.openvim.com/)
@@ -193,4 +195,4 @@ Note that if you're freelancing, it may involve writing contracts, managing mone
 ## Other 
 
 * [Syntax Podcast](https://syntax.fm/)
-* Subscribe to [FreeCodeCamp's Newsletter]
+* Subscribe to [FreeCodeCamp](https://www.freecodecamp.org/news/)'s Newsletter
