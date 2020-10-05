@@ -52,6 +52,7 @@
 * [Javascript for Kids](https://www.amazon.com/JavaScript-Kids-Playful-Introduction-Programming/dp/1593274084) (PDF [here](http://www.r-5.org/files/books/computers/overviews/for-kids/Nick_Morgan-JavaScript_for_Kids-EN.pdf))
 * [Javascript: The Good Parts](https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) (PDF [here](https://github.com/NorthPaulo/research/blob/master/Frontend-books%26research/JavaScript%20-%20The%20Good%20Parts%20-%20Douglas%20Crockford%20-%20May%202008.pdf))
 * [Eloquent Javascript](https://www.amazon.com/Eloquent-JavaScript-Modern-Introduction-Programming/dp/1593272820) (PDF [here](https://eloquentjavascript.net/Eloquent_JavaScript.pdf))
+* [Javascrip30](https://javascript30.com/) (Or really any course by wes bos.)
 
 ### ES6 and Beyond
 
@@ -189,3 +190,7 @@ Note that if you're freelancing, it may involve writing contracts, managing mone
 * [Trello - tracking projects](https://trello.com/)
 * [Treehouse - learn Wordpress in order to create a CMS for clients](http://teamtreehouse.com/)
 
+## Other 
+
+* [Syntax Podcast](https://syntax.fm/)
+* Subscribe to [FreeCodeCamp's Newsletter]
