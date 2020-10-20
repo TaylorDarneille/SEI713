@@ -55,24 +55,30 @@ This can be done by creating a new directory, running `npm init`, then installin
 **server.js**
 
 ```javascript
-const express = require('express');
-const axios = require('axios');
-const app = express();
+const express = require('express')
+const axios = require('axios')
+const app = express()
 
-app.get('/', function(req, res) {
+app.get('/', (req, res)=>{
   axios.get('http://www.google.com')
-    .then(function (response) {
+    .then(response=>{
       // handle success
-      console.log(response);
+      console.log(response)
     })
-});
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
+
+Similar to the `fetch` object that the `fetch` gave us back in our front-end API calls, axios also gives us a back a `response` object that is actually a wrapper containing the api data among other things. According to the [axios docs](https://www.npmjs.com/package/axios#response-schema), the return data from the API will be in the `response.data` object. Try console logging this instead of just `response`.
 
 Note that this app sends out the HTML for [http://www.google.com](http://www.google.com), minus the images due to the images having links **relative** to [http://localhost:3000](http://localhost:3000)
 
 Let's use a more useful source of data that we can parse, like OMDB \(Open Movie Database\)
+
+**API Keys**
+
+Notice that OMDB API has a key requirement for their API. That's okay, it just means we'll need to register for a key real quick before running the example. Don't worry - it's free and only takes a few minutes. Lots of APIs will require keys, so let's get into the habit!
 
 ### Fetching JSON data
 
@@ -85,41 +91,36 @@ Let's modify the example above to make a request to OMDB's API. [OMDB Link](http
 **server.js**
 
 ```javascript
-const express = require('express');
-const axios = require('axios');
-const app = express();
+const express = require('express')
+const axios = require('axios')
+const app = express()
 
-app.get('/', function(req, res) {
-  var qs = {
-    params: {
-      s: 'star wars',
-      apikey: 'YOUR-KEY-HERE'
-    }
-  };
-
-  axios.get('http://www.omdbapi.com', qs)
-    .then(function (response) {
-      // handle success
-      console.log(response.data);
+app.get('/', (req, res)=>{
+  axios.get('http://www.omdbapi.com/?apikey=6827ed10&s=star+wars')
+    .then((response)=>{
+        res.send(response.data)
     })
-});
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
-**API Keys**
+It's very important to call `res.send` in the correct place \(the axios 'then' promise\). Try putting `res.send` outside of the 'then'. You'll get an error!
 
-Notice that OMDB API has a key requirement for their API. That's okay, it just means we'll need to register for a key real quick before running the example. Don't worry - it's free and only takes a few minutes. Lots of APIs will require keys, so let's get into the habit!
+## Environment variables
 
-> Protip: Never share your API keys! These should go in `.env` files and never, ever be pushed up to Github or anywhere else online. The `.env` file can be added to your `.gitignore` file to make git ignore it!
+**Environment variables** are variables that aren't visible in any setting where your code is made available for reading (dev tools, github, etc.) These are values that may be specific to a particular developer or development environment, OR variables that have values we want to stay hidden for security reasons. 
+* Frequently, we'll have variables that are unique to a particular computer. An example is the PORT.
+* We use variables to avoid committing values that are either sensitive or vary from machine to machine.
+* When we use API keys that are meant to be private/secret, this is a case where we DO NOT WANT TO COMMIT THE VALUES. These values can vary, but if a malicious user gets ahold of them, they can cause disastrous results, especially if the values access an account that costs money or resources.
 
-**Things to Note**
+Let's make our API key an environment variable:
 
-* In order to pass a query string to OMDB, we can create an object with key-value pairs.
-  * This object **MUST** contain a key named "params" that is an object containing the key-value pairs you want to send in the query string.
-* After getting the response back, we need to look inside `response.data` to see what was actually returned from the api. That's where axios puts the data. The `response` object you get back from axios is actually a wrapper that contains the api data among other things.
-* It's very important to call `res.send` in the correct place \(the axios 'then' promise\)
-  * Try putting `res.send` outside of the 'then'. You'll get an error!
+1. `npm i dotenv`
+2. touch `.env`
+3. add your api key to the .env file like so: `API_KEY=5555555` but with your real API key
+4. configure things by adding `require('dontenv').config()` to the top of your entry point file
+4. replace your api key in your axios call with `process.env.API_KEY` (hint: use es6 string interpolation)
 
 ## Additional Topics
 
