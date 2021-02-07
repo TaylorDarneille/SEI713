@@ -202,48 +202,58 @@ Notice how we are still using the second argument but we have nothing in the arr
 
 ### Effects With Cleanup
 
-In the older lifecycle method paradigm, whenever we started an asynchronous operation in `componentDidMount` we would need to stop it or clean up after ourselves inside `componentWillUnmount`. This splitting up of logic into different functions leads to code that becomes more difficult to maintain as it grows and is one of the main problems that hooks were intended to solve. The `useEffect` hook gives us an incredibly simple way to deal with this: we return a function from our effect that does our clean-up.
+In the older lifecycle method paradigm, whenever we started an asynchronous operation in `componentDidMount` (like starting an interval, for example) we would need to stop it or clean up after ourselves inside `componentWillUnmount`. This splitting up of logic into different functions leads to code that becomes more difficult to maintain as it grows and is one of the main problems that hooks were intended to solve. The `useEffect` hook gives us an incredibly simple way to deal with this: we return a function from our effect that does our clean-up.
+
+* Create a new component called `IntervalTicker`, then import and render it at the bottom of your `App` component:
 
 ```js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react'
 
 function IntervalTicker() {
-  const [handle, setHandle] = useState(null)
-  
-  useEffect(() => {
-    // This line starts an interval and stores the returned handle in state
-    setHandle( setInterval(() => console.log('tick'), 1000) )
-    // This line returns a function that clears the interval
-    return () => {
-      clearInterval(handle)
-    }
-  }, []) // Don't forget the empty dependency list
+    const [intervalRef, setIntervalRef] = useState(null)
 
-  return (
-    <p>Yada yada yada</p>
-  )
+    useEffect(()=>{
+        // This line starts an interval and stores the returned reference in state
+        setIntervalRef(setInterval(()=>console.log('tick'), 1000))
+        // This line returns a function that clears the interval
+        return ()=>{ clearInterval(intervalRef) }
+    }, [])
+
+    return (
+        <div>
+            <em>pssstt.... check the console for some interval action</em>
+        </div>
+    )
 }
+
+export default IntervalTicker
+```
+
+The above code could also be written as follows if it's easier for you to track what's happening:
+
+```js
+function IntervalTicker() {
+    const [intervalRef, setIntervalRef] = useState(null)
+
+    const tick = () => {
+        console.log('tick')
+    }
+
+    const stopTick = () => {
+        clearInterval(intervalRef)
+    }
+
+    useEffect(()=>{
+        let newInterval = setInterval(tick, 1000)
+        setIntervalRef(newInterval)
+        return stopTick
+    }, [])
+
+    return (
+        <div>
+            <em>pssstt.... check the console for some interval action</em>
+        </div>
+    )
 ```
 
 Our cleanup for our interval involves clearing that interval by using the handle in the `clearInterval` function. All we need to do to make this cleanup happen is to *return a function that does that* from our effect. This can be any sort of function, named or anonymous, and it just needs to do the cleanup steps. By returning that function from our effect, we are telling React that this function should be run when this component is unmounted. React will take care of the rest! We do, however, need to remember to pass in an empty dependency list so that we don't start a new interval on literally every render.
-
-## What other Hooks are there?
-
-Here are some of the more popular ones:
-
-* `useContext` - Allows use of the Context API, useful for decoupling state from components
-* `useReducer` - Used for more complex state manipulations. Works very similarly to Redux.
-* `useRef` - Allows for the use of refs to DOM objects
-* `useLayoutEffect` - A synchronous version of useEffect used for reading layout metrics and then re-rendering based on those.
-
-There are a few more and more are being added all the time. You can also create your own custom hooks yourself using `useEffect`!
-
-## Conclusion
-
-Hooks represent an improvement in React code organization and reasonability. You don't have to use them since class-based components still exist and work but Facebook is recommending that you try them out since they lend themselves to a better development experience.
-
-## Additional Resources
-
-* [Hooks Documentation](https://reactjs.org/docs/hooks-intro.html)
-* [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)
-* [Fetching Data with React and Hooks](https://www.robinwieruch.de/react-hooks-fetch-data)
