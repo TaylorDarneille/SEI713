@@ -197,6 +197,7 @@
   * [React Hooks](16-react/react-hooks/readme.md)
     * [useState](16-react/react-hooks/useState.md)
     * [useEffect](16-react/react-hooks/useEffect.md)
+    * [More Hooks](16-react/react-hooks/more.md)
   * [React LifeCycle](16-react/react-lifecycle/README.md)
     * [Lab: Component LifeCycle](16-react/react-lifecycle/lifecycle-exercise.md)
   * [React Deployment](16-react/react-deploy.md)
