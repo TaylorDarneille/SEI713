@@ -12,7 +12,7 @@
 
 [https://github.com/mars/create-react-app-buildpack\#quick-start](https://github.com/mars/create-react-app-buildpack#quick-start)
 
-## Create a React App and Deploy It
+## Create a React App with create-react-app
 
 It's very, very, very, very easy to start up a React app and deploy it to Heroku. Developers have created tools to automate the entire process.
 
@@ -23,10 +23,21 @@ Replace `$APP_NAME`  with whatever you want to call your app directory, and what
 ```text
 npx create-react-app $APP_NAME
 cd $APP_NAME
+```
+
+Now set up a github and start git tracking this app!
+
+---
+
+## Deploy
+
+In terminal, run the following from *inside your react app directory*:
+
+```
 heroku create $APP_NAME --buildpack https://github.com/mars/create-react-app-buildpack.git
 git add -A
 git commit -m "new react app"
-git push heroku master
+git push heroku main
 heroku open
 ```
 
